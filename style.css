@@ -1,0 +1,279 @@
+:root[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --container-bg: #1e1e1e;
+    --border-color: #333333;
+    --btn-bg: #3a86ff;
+    --btn-hover: #2563eb;
+    --card-bg: #2d2d2d;
+    --canvas-bg: #000000;
+    --tab-bg: #2a2a2a;
+    --tab-active-bg: #3a86ff;
+}
+
+:root[data-theme="light"] {
+    --bg-color: #f3f4f6;
+    --text-color: #1f2937;
+    --container-bg: #ffffff;
+    --border-color: #d1d5db;
+    --btn-bg: #3a86ff;
+    --btn-hover: #2563eb;
+    --card-bg: #f9fafb;
+    --canvas-bg: #000000;
+    --tab-bg: #e5e7eb;
+    --tab-active-bg: #3a86ff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto 10px auto;
+}
+
+.header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.theme-btn {
+    background: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Стили для вкладок */
+.tabs-container {
+    display: flex;
+    gap: 10px;
+    max-width: 800px;
+    margin: 0 auto 16px auto;
+}
+
+.tab-btn {
+    flex: 1;
+    background-color: var(--tab-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.tab-btn.active {
+    background-color: var(--tab-active-bg);
+    color: #ffffff;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--container-bg);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.canvas-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 300px;
+}
+
+#drawCanvas {
+    background-color: var(--canvas-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    cursor: crosshair;
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
+}
+
+.controls {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    background-color: var(--btn-bg);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover:not(:disabled) {
+    background-color: var(--btn-hover);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#clearBtn {
+    background-color: #ef4444;
+}
+#clearBtn:hover {
+    background-color: #dc2626;
+}
+
+#resultText {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #10b981;
+    text-align: center;
+}
+
+.history-container {
+    flex: 1;
+    min-width: 250px;
+    border-left: 1px solid var(--border-color);
+    padding-left: 20px;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.history-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 12px 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    animation: fadeIn 0.3s ease;
+}
+
+.badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-right: 10px;
+    color: #fff;
+}
+
+.badge-chars { background-color: #f59e0b; }
+.badge-shapes { background-color: #8b5cf6; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 650px) {
+    .history-container {
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+        padding-left: 0;
+        padding-top: 20px;
+    }
+}
+
+/* Новые классы для панели деталей и подсказок */
+.hint { 
+    max-width: 800px; 
+    margin: 0 auto 16px auto; 
+    text-align: center; 
+    color: #9ca3af; 
+    font-size: 14px; 
+}
+
+.result-panel { 
+    width: 100%; 
+    margin-top: 20px; 
+    padding-top: 16px; 
+    border-top: 1px solid var(--border-color); 
+}
+.result-top { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 16px; 
+}
+.big-result { 
+    flex: 1; 
+    text-align: center; 
+    font-size: 56px; 
+    font-weight: 700; 
+    word-break: break-word; 
+}
+.preview-box { 
+    text-align: center; 
+    color: #9ca3af; 
+}
+.preview-box canvas { 
+    width: 80px; 
+    height: 80px; 
+    background: #000; 
+    border: 1px solid var(--border-color); 
+    border-radius: 6px; 
+    image-rendering: pixelated; 
+    display: block; 
+    margin-bottom: 4px; 
+}
+
+.top-row { 
+    display: grid; 
+    grid-template-columns: 120px 1fr 56px; 
+    align-items: center; 
+    gap: 10px; 
+    margin: 8px 0; 
+    font-size: 14px; 
+}
+.top-row .name { 
+    font-weight: 600; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+}
+.bar { 
+    height: 10px; 
+    background: var(--border-color); 
+    border-radius: 6px; 
+    overflow: hidden; 
+}
+.bar > div { 
+    height: 100%; 
+    background: #3a86ff; 
+    border-radius: 6px; 
+    transition: width .4s ease; 
+}
+.top-row .pct { 
+    text-align: right; 
+    color: #9ca3af; 
+}
+
+#improveBtn { background-color: #8b5cf6; }
+#improveBtn:hover { background-color: #7c3aed; }

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Распознавание: Буквы и цифры</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.17.1/dist/ort.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1 id="mainTitle">Распознавание: Буквы и цифры</h1>
+        <button id="themeToggle" class="theme-btn">☀️ Светлая тема</button>
+    </div>
+
+    <!-- Вкладки для переключения режимов -->
+    <div class="tabs-container">
+        <button id="tabChars" class="tab-btn active" data-mode="chars">Буквы и цифры</button>
+        <button id="tabShapes" class="tab-btn" data-mode="shapes">Фигуры и знаки</button>
+    </div>
+
+    <p id="hint" class="hint">Нарисуйте один символ (цифру, букву латиницы или кириллицы) и нажмите «Распознать».</p>
+
+    <div class="container">
+        <div class="canvas-container">
+            <canvas id="drawCanvas" width="280" height="280"></canvas>
+            <div class="controls">
+                <button id="clearBtn">Очистить</button>
+                <button id="predictBtn" disabled>Распознать</button>
+                <button id="improveBtn" hidden>✨ Улучшить</button>
+            </div>
+            <h2 id="resultText">Загрузка моделей...</h2>
+            
+            <div id="resultPanel" class="result-panel" hidden>
+                <div class="result-top">
+                    <div class="big-result" id="bigResult">-</div>
+                    <div class="preview-box">
+                        <canvas id="previewCanvas" width="112" height="112"></canvas>
+                        <small id="previewLabel">Превью</small>
+                    </div>
+                </div>
+                <h3>Топ-5 вариантов:</h3>
+                <div id="topList"></div>
+            </div>
+        </div>
+
+        <div class="history-container">
+            <h3>История (последние 5)</h3>
+            <div id="historyList" class="history-list">
+                <!-- Сюда добавляются карточки истории -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Универсальный скрытый canvas (28 или 32) -->
+    <canvas id="processCanvas" style="display:none;"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
